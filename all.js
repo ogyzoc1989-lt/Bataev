@@ -1,0 +1,10 @@
+var siteA = ['Аня', 'Паша', 'Инна', 'Андрей', 'Олег'];
+var siteB = ['Алёша', 'Тимур', 'Марк', 'Ольга', 'Сергей'];
+var setA = new Set(siteA);
+console.log("1. Set на основе siteA:", setA);
+console.log("2. Количество уникальных пользователей сайта А:", setA.size);
+console.log("3. Заходил ли Petr на сайт А:", setA.has('petr'));
+var allVisitors = new Set([...siteA, ...siteB]);
+console.log("4. Объединенный Set allVisitors:", allVisitors);
+var visitorsArray = [...allVisitors];
+console.log("5. Итоговый массив всех посетителей:", visitorsArray);
