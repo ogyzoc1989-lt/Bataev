@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Моя учебная страница</title>
+</head>
+
+<body>
+
+    <h1>Моя учебная страница</h1>
+
+    <!-- Кнопка с надписью «Добро пожаловать» -->
+    <button id="addBtn">Добро пожаловать</button>
+
+    <!-- Сюда будут добавляться элементы списка -->
+    <ul id="skills"></ul>
+
+    <script>
+        // Находим кнопку и список
+        let addBtn = document.querySelector("#addBtn");
+        let skills = document.querySelector("#skills");
+
+        // При нажатии на кнопку создаем элементы и добавляем их в список
+        addBtn.addEventListener("click", function () {
+            let item1 = document.createElement("li");
+            item1.textContent = "HTML";
+
+            let item2 = document.createElement("li");
+            item2.textContent = "CSS";
+
+            let item3 = document.createElement("li");
+            item3.textContent = "JavaScript";
+
+            skills.append(item1, item2, item3);
+        });
+    </script>
+
+</body>
+
+</html>
