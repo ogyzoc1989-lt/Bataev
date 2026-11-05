@@ -30,65 +30,48 @@
 
     <h1>Домашнее задание: Карточка сотрудника</h1>
 
-    <!-- Кнопка для последнего пункта задания -->
     <br><br>
     <button id="employee-btn">Нажми на меня (DOM-событие)</button>
 
     <script>
-        // 1. Создайте объект employee с полями name, position и department[span_2](start_span)[span_2](end_span)
         const employee = {
             name: 'Алексей',
             position: 'Frontend Developer',
             department: 'IT-отдел',
 
-            // 2. Создайте метод showCard(), который выводит все данные сотрудника через this[span_3](start_span)[span_3](end_span)
             showCard: function () {
                 console.log(`Сотрудник: ${this.name}, Должность: ${this.position}, Отдел: ${this.department}`);
             }
         };
 
-        // 3. Вызовите метод как метод объекта[span_4](start_span)[span_4](end_span)
         console.log("--- 1. Вызов метода объекта ---");
         employee.showCard();
-        // Вывод: Сотрудник: Алексей, Должность: Frontend Developer, Отдел: IT-отдел
 
-        // 4. Сохраните метод в отдельную переменную и вызовите её. Зафиксируйте результат[span_5](start_span)[span_5](end_span)
         console.log("--- 2. Потеря контекста при вызове из переменной ---");
         const looseShowCard = employee.showCard;
         looseShowCard();
-        // Вывод: Сотрудник: undefined, Должность: undefined, Отдел: undefined 
-        // (Контекст потерян, так как функция вызвана без объекта слева от точки).
-
-        // 5. Исправьте ситуацию с помощью bind()[span_6](start_span)[span_6](end_span)
         console.log("--- 3. Исправление ситуации через bind() ---");
         const boundShowCard = employee.showCard.bind(employee);
         boundShowCard();
-        // Вывод: Сотрудник: Алексей, Должность: Frontend Developer, Отдел: IT-отдел
-
-        // 6. Создайте функцию showCardInCity(city) и вызовите её с помощью call() и apply()[span_7](start_span)[span_7](end_span)
+    
         function showCardInCity(city) {
             console.log(`Сотрудник: ${this.name}, Должность: ${this.position}, Отдел: ${this.department}, Город: ${city}`);
         }
 
         console.log("--- 4. Вызов через call() ---");
-        // call принимает аргументы по отдельности через запятую
         showCardInCity.call(employee, 'Санкт-Петербург');
 
         console.log("--- 5. Вызов через apply() ---");
-        // apply принимает аргументы в виде массива
         showCardInCity.apply(employee, ['Москва']);
 
-        // 7. Добавьте на HTML-страницу кнопку. Обработайте событие обычной и стрелочной функциями, сравните this и event.currentTarget[span_8](start_span)[span_8](end_span)
         const btn = document.getElementById('employee-btn');
 
-        // Обработчик обычной функцией
         btn.addEventListener('click', function (event) {
             console.log("--- 6. DOM-событие: Обычная функция ---");
             console.log("this (равен кнопке):", this);
             console.log("event.currentTarget:", event.currentTarget);
         });
 
-        // Обработчик стрелочной функцией
         btn.addEventListener('click', (event) => {
             console.log("--- 7. DOM-событие: Стрелочная функция ---");
             console.log("this (лексический, равен window):", this);
